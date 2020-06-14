@@ -1,5 +1,11 @@
+const APIcotizador = new API('b400ac0098115d68b3c072ddd62399edca43a2b31c548cb0a6cb7b8c8b58d027');
 const ui = new Interfaz();
 //ui.mostrarMensaje();
+
+
+APIcotizador.obtenerMonedasAPI();
+
+
 
 //LEER EL FORMULARIO
 const formulario = document.querySelector('#formulario');
