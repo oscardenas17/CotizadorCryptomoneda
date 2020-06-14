@@ -29,7 +29,11 @@ formulario.addEventListener('submit',(e)=>{
         ui.mostrarMensaje('Ambos campos son obligatorios','alert bg-danger text-center');
     }else{
         //consultar api, todo ok
-    }
+        APIcotizador.obtenerValores(monedaSeleccionada, criptomonedaSeleccionada)
+            .then(data =>{
+                console.log(data);
+            })
+        }
 
 
 });
