@@ -48,14 +48,19 @@ class Interfaz {
     const datosMoneda = resultado[crypto][moneda];
 
     //recortar digitos de precio
-    let precio = datosMoneda.PRICE.toFixed(2);
+    let precio = datosMoneda.PRICE.toFixed(2),
+        porcentaje = datosMoneda.CHANGEPCTDAY.toFixed(2),
+        actualizado = new Date(datosMoneda.LASTUPDATE*1000).toLocaleDateString('es-CL');
+    
 
    //contruir el template
     let templateHTML = `
       <div class="card bg-warning"> 
         <div class="card-body text-light">
-          <h2 class="card-title"> Resultado: </h2>
+          <h2 class="card-title"> Resul41tado: </h2>
           <p>  El Precio de ${datosMoneda.FROMSYMBOL} a moneda ${datosMoneda.TOSYMBOL} es de $: ${precio}</p>
+          <p> Variación último día: ${porcentaje}</p>
+          <p> última actualñización: ${actualizado}</p>
         </div>
       </div>
     `;
