@@ -44,6 +44,13 @@ class Interfaz {
   //Imprime el resultado de la cotización
 
   mostrarResultado(resultado, moneda, crypto){
+
+    //En caso de un resultado anterior ocultarlo
+    const resultadoAnterior = document.querySelector('#resultado > div');
+    if(resultadoAnterior){
+      resultadoAnterior.remove();
+    }
+
  
     const datosMoneda = resultado[crypto][moneda];
 
@@ -57,16 +64,28 @@ class Interfaz {
     let templateHTML = `
       <div class="card bg-warning"> 
         <div class="card-body text-light">
-          <h2 class="card-title"> Resul41tado: </h2>
+          <h2 class="card-title"> Resul1tado: </h2>
           <p>  El Precio de ${datosMoneda.FROMSYMBOL} a moneda ${datosMoneda.TOSYMBOL} es de $: ${precio}</p>
           <p> Variación último día: ${porcentaje}</p>
           <p> última actualñización: ${actualizado}</p>
         </div>
       </div>
     `;
-   //insertar el resultado
-    document.querySelector('#resultado').innerHTML = templateHTML;
+    this.mostrarOcultarSpinner('block');
 
+   //insertar el resultado
+   setTimeout(() => {
+    document.querySelector('#resultado').innerHTML = templateHTML;
+    //Ocultar el spinner
+    this.mostrarOcultarSpinner('none');
+
+   }, 3000);
+  }
+
+
+  mostrarOcultarSpinner(vista){
+    const spinner = document.querySelector('.contenido-spinner');
+    spinner.style.display = vista;
   }
   
 }
