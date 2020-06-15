@@ -31,7 +31,7 @@ formulario.addEventListener('submit',(e)=>{
         //consultar api, todo ok
         APIcotizador.obtenerValores(monedaSeleccionada, criptomonedaSeleccionada)
             .then(data =>{
-                console.log(data);
+                ui.mostrarResultado(data.resultado.RAW, monedaSeleccionada, criptomonedaSeleccionada);
             })
         }
 
